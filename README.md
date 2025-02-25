@@ -26,3 +26,5 @@ OTEL_EXPORTER_OTLP_ENDPOINT http://192.168.0.2:4137/v1/logs
 ```
 
 For other OTEL env variables refer to https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/
+
+Docker container available at https://hub.docker.com/r/slickdomi/speedtest-cli-otel

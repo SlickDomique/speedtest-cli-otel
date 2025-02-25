@@ -9,6 +9,7 @@ from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
 
 service_name = os.environ.get("service_name")
 instance_id = os.environ.get("instance_id")
+endpoint = os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT")
 
 logger_provider = LoggerProvider(
     resource=Resource.create(
@@ -20,7 +21,9 @@ logger_provider = LoggerProvider(
 )
 set_logger_provider(logger_provider)
 
-exporter = OTLPLogExporter()
+exporter = OTLPLogExporter(
+    endpoint=endpoint,
+)
 
 logger_provider.add_log_record_processor(BatchLogRecordProcessor(exporter))
 handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)

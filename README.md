@@ -8,7 +8,7 @@ To fight the unwinable battle of bad internet connections, this service runs a s
 
 Get prebuilt docker image from dockerhub:
 ```
-docker run -i -e OTEL_EXPORTER_OTLP_ENDPOINT='http://192.168.0.2:4137/v1/logs' --name speedtest slickdomi/speedtest-cli-otel:latest
+docker run -e OTEL_EXPORTER_OTLP_ENDPOINT='http://192.168.0.2:4137/v1/logs' --name speedtest slickdomi/speedtest-cli-otel:latest
 ```
 
 Configure the service using the following environment variables:

@@ -16,5 +16,5 @@ ENV OTEL_EXPORTER_OTLP_TIMEOUT 15
 
 RUN apk update
 RUN apk add --no-cache speedtest-cli bash py3-pip
-RUN pip install --break-system-packages schedule opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
+RUN pip install --break-system-packages schedule opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp-proto-http
 ENTRYPOINT ["python", "/code/speedtest.py"]

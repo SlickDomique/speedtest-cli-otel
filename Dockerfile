@@ -1,4 +1,4 @@
-FROM python:3.14.0a5-bookworm
+FROM alpine:3.21
 
 RUN mkdir /code
 WORKDIR /code
@@ -14,8 +14,7 @@ ENV OTEL_EXPORTER_OTLP_LOGS_TIMEOUT 15
 ENV OTEL_RESOURCE_ATTRIBUTES ""
 ENV OTEL_EXPORTER_OTLP_TIMEOUT 15
 
-RUN apt update && apt upgrade -y
-RUN apt install -y speedtest-cli bash python3-pip python3-grpcio gcc g++ libc-dev make
-RUN pip install --break-system-packages --upgrade pip
-RUN pip install --break-system-packages schedule opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp-proto-http
+RUN apk update
+RUN apk add --no-cache speedtest-cli bash py3-pip
+RUN pip install --break-system-packages schedule opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
 ENTRYPOINT ["python", "/code/speedtest.py"]
